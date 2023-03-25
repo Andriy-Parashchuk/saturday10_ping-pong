@@ -17,6 +17,8 @@ class GameSprite(sprite.Sprite):
 WIDTH = 1200
 HEIGHT = 700
 
+ASPECT_RATIO = WIDTH / HEIGHT
+
 clock = time.Clock()
 fps = 60
 
@@ -41,6 +43,9 @@ while game:
             if e.key == K_ESCAPE:
                 game = False
         if e.type == VIDEORESIZE:
+            new_width = e.w
+            new_height = int(new_width / ASPECT_RATIO)
+            window = display.set_mode((new_width, new_height), RESIZABLE)
             current_size = window.get_size()
 
     virtual_surface.fill(back)
