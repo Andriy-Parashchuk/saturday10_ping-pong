@@ -3,6 +3,9 @@ font.init()
 
 
 class GameSprite(sprite.Sprite):
+    """
+    main class for future objects
+    """
     def __init__(self, sprite_image, x, y, width, height, speed):
         super().__init__()
         self.image = transform.scale(image.load(sprite_image), (width, height))
@@ -16,6 +19,9 @@ class GameSprite(sprite.Sprite):
 
 
 class Ball(GameSprite):
+    """
+    class for create ball object
+    """
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -55,6 +61,9 @@ class Ball(GameSprite):
 
 
 class Platform(GameSprite):
+    """
+    class for create platform object
+    """
     def __init__(self, x, y, angle, player):
         super().__init__("platform.png", x, y, 150, 20, 10)
         self.image = transform.rotate(self.image, angle)
@@ -111,6 +120,10 @@ font_interface = font.Font(None, 60)
 text_score_left = font_interface.render(str(score_left), True, (0, 0, 0))
 text_score_right = font_interface.render(str(score_right), True, (0, 0, 0))
 
+
+"""
+main loop for game
+"""
 while game:
     for e in event.get():
         if e.type == QUIT:
